@@ -8,34 +8,52 @@ interface LinkedList {
   insert: (val: any) => void;
   find: (val: any) => LinkedNode | boolean;
   get: () => LinkedNode;
+  reverse: () => LinkedNode;
 }
 
 function generatorNode(val: any): LinkedNode {
   return {
     value: val,
     next: null,
-  }
+  };
 }
 
 function linkedList(): Function {
-  let head = generatorNode('');
-  let current = head;
+  let head = generatorNode('head');
 
   return function inner(): LinkedList {
     return {
       insert,
       find,
-      get
+      get,
+      reverse
+    };
+
+    function reverse() {
+      let root = generatorNode('head');
+      let current = head.next;
+      while(current !== null) {
+        let next = current.next;
+        current.next = root.next;
+        root.next = current;
+        current = next;
+      }
+      head = root;
+      return head;
     }
+
 
     function insert(val: any) {
       const newNode = generatorNode(val);
+      let current = head;
+      while(current.next !== null) {
+        current = current.next;
+      }
       current.next = newNode;
-      current = newNode;
     }
 
     function get() {
-      return head
+      return head;
     }
 
     function find(val: any) {
@@ -48,7 +66,7 @@ function linkedList(): Function {
       }
       return target;
     }
-  }
+  };
 }
 
 module.exports = linkedList();

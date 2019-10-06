@@ -1,3 +1,6 @@
 /node_modules
 yarn.lock
+/coverage
+/.idea
 yarn-error.log
+package-lock.json
