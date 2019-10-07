@@ -71,3 +71,65 @@ describe('isCircle', () => {
     expect(link.isCircle(a1)).toBe(true);
   })
 })
+
+describe('megrgeList', () => {
+  it('return second if first is `null`', () => {
+    let a = link.nodes()();
+    let b = link.nodes()();
+    b.insert(1)
+    expect(link.mergeList(a.get(), b.get())).toEqual({
+      value: 'head',
+      next: {
+        value: 1,
+        next: null
+      }
+    })
+  });
+  it('return first if first is not `null` and second is `null`', () => {
+    let a = link.nodes()();
+    let b = link.nodes()();
+    b.insert(1)
+    expect(link.mergeList(b.get(), a.get())).toEqual({
+      value: 'head',
+      next: {
+        value: 1,
+        next: null
+      }
+    })
+  });
+
+  it('can merge success', () => {
+    let a = link.nodes()();
+    let b = link.nodes()();
+    a.insert(1)
+    a.insert(3)
+    a.insert(5)
+    a.insert(6)
+
+    b.insert(2);
+    b.insert(4);
+
+    expect(link.mergeList(b.get(), a.get())).toEqual({
+      value: 'head',
+      next: {
+        value: 1,
+        next: {
+          value: 2,
+          next: {
+            value: 3,
+            next: {
+              value: 4,
+              next: {
+                value: 5,
+                next: {
+                  value: 6,
+                  next: null
+                }
+              }
+            }
+          }
+        }
+      }
+    })
+  })
+});

@@ -42,7 +42,6 @@ function linkedList(): Function {
       return head;
     }
 
-
     function insert(val: any) {
       const newNode = generatorNode(val);
       let current = head;
@@ -69,7 +68,7 @@ function linkedList(): Function {
   };
 }
 
-// 链表的环检测
+// is circle in linkedList
 function isCircle(head: LinkedNode) {
   let slow = head;
   let fast = head.next;
@@ -80,13 +79,45 @@ function isCircle(head: LinkedNode) {
     }
     fast = fast.next.next;
     slow = slow.next;
-
   }
 
   return false
 }
 
+function mergeList(a: LinkedNode, b: LinkedNode) {
+  if (!a || a.next == null) {
+    return b;
+  } else if (!b || b.next === null) {
+    return a;
+  }
+
+  let result = generatorNode('head');
+  let resultPointer = result;
+  let aPointer = a.next;
+  let bPointer = b.next;
+
+  while (aPointer !== null && bPointer !== null) {
+    if (aPointer.value < bPointer.value) {
+      resultPointer.next = aPointer
+      resultPointer = resultPointer.next
+      aPointer = aPointer.next;
+    } else {
+      resultPointer.next = bPointer
+      resultPointer = resultPointer.next
+      bPointer = bPointer.next
+    }
+  }
+
+  if (aPointer === null) {
+    resultPointer.next = bPointer
+  } else if (bPointer === null) {
+    resultPointer.next = aPointer
+  }
+
+  return result
+}
 
 module.exports.nodes = linkedList;
 module.exports.isCircle = isCircle;
+module.exports.mergeList = mergeList;
 module.exports.generatorNode = generatorNode;
