@@ -159,3 +159,22 @@ describe('deleteLastIndexOf', () => {
     expect(link.deleteLastKth(deleteNodes.get(), 2)).toEqual(resultNodes.get());
   })
 })
+
+describe('findMiddleNode', () => {
+  it('will find correct node when length is odd', () => {
+    let node4 = link.nodes()();
+    node4.insert(1)
+    expect(link.findMiddleNode(node4.get()).value).toBe(1);
+    node4.insert(2)
+    node4.insert(3)
+    expect(link.findMiddleNode(node4.get()).value).toBe(2);
+  })
+  it('will find correct node when length is even', () => {
+    let node5 = link.nodes()();
+    node5.insert(1)
+    node5.insert(2)
+    node5.insert(3)
+    node5.insert(4)
+    expect(link.findMiddleNode(node5.get()).value).toBe(3);
+  })
+})

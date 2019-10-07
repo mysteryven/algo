@@ -117,9 +117,9 @@ function mergeList(a: LinkedNode, b: LinkedNode) {
   return result
 }
 
-function deleteLastKth(lists: LinkedNode, index: number) {
-  let fast = lists.next;
-  let slow = lists.next;
+function deleteLastKth(list: LinkedNode, index: number) {
+  let fast = list.next;
+  let slow = list.next;
   let prevSlow = undefined;
   let count = index;
   if (count < 1) {
@@ -127,7 +127,6 @@ function deleteLastKth(lists: LinkedNode, index: number) {
   }
 
   while (count !== 0) {
-    console.log(fast)
     if (fast === null) {
       return false
     }
@@ -141,19 +140,31 @@ function deleteLastKth(lists: LinkedNode, index: number) {
     slow = slow.next
   }
 
-  console.log(prevSlow)
-  console.log(slow)
   if (prevSlow === undefined) {
-    lists.next = lists.next.next;
+    list.next = list.next.next;
   } else {
     prevSlow.next = prevSlow.next.next;
     slow.next = undefined;
   }
 
-  return lists;
+  return list;
+}
+
+
+function findMiddleNode(list: LinkedNode) {
+  let fast = list.next;
+  let slow = list.next;
+
+  while (fast !== null && fast.next !== null) {
+    fast = fast.next.next;
+    slow = slow.next
+  }
+
+  return slow;
 }
 
 module.exports.nodes = linkedList;
+module.exports.findMiddleNode = findMiddleNode;
 module.exports.deleteLastKth = deleteLastKth;
 module.exports.isCircle = isCircle;
 module.exports.mergeList = mergeList;
