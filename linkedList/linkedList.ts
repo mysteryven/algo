@@ -32,7 +32,7 @@ function linkedList(): Function {
     function reverse() {
       let root = generatorNode('head');
       let current = head.next;
-      while(current !== null) {
+      while (current !== null) {
         let next = current.next;
         current.next = root.next;
         root.next = current;
@@ -46,7 +46,7 @@ function linkedList(): Function {
     function insert(val: any) {
       const newNode = generatorNode(val);
       let current = head;
-      while(current.next !== null) {
+      while (current.next !== null) {
         current = current.next;
       }
       current.next = newNode;
@@ -69,4 +69,24 @@ function linkedList(): Function {
   };
 }
 
-module.exports = linkedList();
+// 链表的环检测
+function isCircle(head: LinkedNode) {
+  let slow = head;
+  let fast = head.next;
+
+  while (fast !== null && fast.next !== null) {
+    if (fast === slow) {
+      return true
+    }
+    fast = fast.next.next;
+    slow = slow.next;
+
+  }
+
+  return false
+}
+
+
+module.exports.nodes = linkedList;
+module.exports.isCircle = isCircle;
+module.exports.generatorNode = generatorNode;
