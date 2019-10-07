@@ -133,3 +133,29 @@ describe('megrgeList', () => {
     })
   })
 });
+
+describe('deleteLastIndexOf', () => {
+  it('will return `false` if index is not invalid', () => {
+    let deleteNodes = link.nodes()();
+    deleteNodes.insert('1')
+    deleteNodes.insert('2')
+    expect(link.deleteLastKth(deleteNodes.get(), -1)).toBe(false);
+    expect(link.deleteLastKth(deleteNodes.get(), 3)).toBe(false);
+  })
+  it('can delete successful when list only one node', () => {
+    let deleteNodes = link.nodes()();
+    deleteNodes.insert(1)
+    let resultNodes = link.nodes()();
+    expect(link.deleteLastKth(deleteNodes.get(), 1)).toEqual(resultNodes.get());
+  })
+  it('will return list when delete success', () => {
+    let deleteNodes = link.nodes()();
+    deleteNodes.insert(1)
+    deleteNodes.insert(2)
+    deleteNodes.insert(3)
+    let resultNodes = link.nodes()();
+    resultNodes.insert(1)
+    resultNodes.insert(3)
+    expect(link.deleteLastKth(deleteNodes.get(), 2)).toEqual(resultNodes.get());
+  })
+})

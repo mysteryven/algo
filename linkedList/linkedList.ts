@@ -117,7 +117,44 @@ function mergeList(a: LinkedNode, b: LinkedNode) {
   return result
 }
 
+function deleteLastKth(lists: LinkedNode, index: number) {
+  let fast = lists.next;
+  let slow = lists.next;
+  let prevSlow = undefined;
+  let count = index;
+  if (count < 1) {
+    return false
+  }
+
+  while (count !== 0) {
+    console.log(fast)
+    if (fast === null) {
+      return false
+    }
+    fast = fast.next;
+    count -= 1;
+  }
+
+  while (fast !== null) {
+    fast = fast.next;
+    prevSlow = slow;
+    slow = slow.next
+  }
+
+  console.log(prevSlow)
+  console.log(slow)
+  if (prevSlow === undefined) {
+    lists.next = lists.next.next;
+  } else {
+    prevSlow.next = prevSlow.next.next;
+    slow.next = undefined;
+  }
+
+  return lists;
+}
+
 module.exports.nodes = linkedList;
+module.exports.deleteLastKth = deleteLastKth;
 module.exports.isCircle = isCircle;
 module.exports.mergeList = mergeList;
 module.exports.generatorNode = generatorNode;
