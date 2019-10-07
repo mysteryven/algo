@@ -1,6 +1,5 @@
 let link = require('../linkedList.ts');
 
-
 describe('LinkedList', () => {
   let nodes1 = link.nodes()
   let nodesExample = nodes1();
