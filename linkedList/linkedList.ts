@@ -108,8 +108,8 @@ function mergeList(a: LinkedNode, b: LinkedNode) {
 
   if (aPointer === null) {
     resultPointer.next = bPointer
-  } else if (bPointer === null) {
-    resultPointer.next = aPointer
+  } else {
+    resultPointer.next = aPointer;
   }
 
   return result

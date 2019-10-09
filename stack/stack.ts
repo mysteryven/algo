@@ -80,10 +80,11 @@ function Chrome(): IChrome {
       return false;
     },
     goBack() {
-      let prevUrl = enStack.pop();
-      if (enStack.length <= 1 || prevUrl === false) {
+      if (enStack.length <= 1 ) {
         return false
       }
+
+      let prevUrl = enStack.pop();
       deStack.push(prevUrl);
       return true;
     },
