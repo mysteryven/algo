@@ -101,7 +101,7 @@ describe('megrgeList', () => {
     })
   });
 
-  it('can merge success', () => {
+  it('can merge success if second param is longer', () => {
     let a = linkedList();
     let b = linkedList();
     a.insert(1)
@@ -112,7 +112,7 @@ describe('megrgeList', () => {
     b.insert(2);
     b.insert(4);
 
-    expect(mergeList(b.get(), a.get())).toEqual({
+    const result = {
       value: 'head',
       next: {
         value: 1,
@@ -133,8 +133,48 @@ describe('megrgeList', () => {
           }
         }
       }
-    })
+    }
+
+    expect(mergeList(b.get(), a.get())).toEqual(result)
   })
+
+  it('can merge success if first params is longer', () => {
+    let a = linkedList();
+    let b = linkedList();
+    a.insert(1)
+    a.insert(3)
+    a.insert(5)
+    a.insert(6)
+
+    b.insert(2);
+    b.insert(4);
+
+    const result = {
+      value: 'head',
+      next: {
+        value: 1,
+        next: {
+          value: 2,
+          next: {
+            value: 3,
+            next: {
+              value: 4,
+              next: {
+                value: 5,
+                next: {
+                  value: 6,
+                  next: null
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    expect(mergeList(a.get(), b.get())).toEqual(result)
+  })
+
 });
 
 describe('deleteLastIndexOf', () => {
