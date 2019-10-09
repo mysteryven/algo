@@ -1,12 +1,12 @@
 // 链表
-interface LinkedNode {
+export interface LinkedNode {
   value: any;
   next: LinkedNode | null;
 }
 
 interface LinkedList {
   insert: (val: any) => void;
-  find: (val: any) => LinkedNode | boolean;
+  find: (val?: any) => LinkedNode | boolean;
   get: () => LinkedNode;
   reverse: () => LinkedNode;
 }
@@ -161,9 +161,12 @@ function findMiddleNode(list: LinkedNode) {
   return slow;
 }
 
-module.exports.nodes = linkedList;
-module.exports.findMiddleNode = findMiddleNode;
-module.exports.deleteLastKth = deleteLastKth;
-module.exports.isCircle = isCircle;
-module.exports.mergeList = mergeList;
-module.exports.generatorNode = generatorNode;
+export {
+  linkedList,
+  findMiddleNode,
+  deleteLastKth,
+  isCircle,
+  mergeList,
+  generatorNode
+}
+

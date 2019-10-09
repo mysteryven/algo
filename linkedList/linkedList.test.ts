@@ -1,7 +1,15 @@
-let link = require('./linkedList.ts');
+import { LinkedNode } from './linkedList';
+import {
+  linkedList,
+  findMiddleNode,
+  deleteLastKth,
+  isCircle,
+  mergeList,
+  generatorNode
+} from './linkedList';
 
 describe('LinkedList', () => {
-  let nodesExample = link.nodes()
+  let nodesExample = linkedList()
   nodesExample.insert(1);
   nodesExample.insert('hello');
 
@@ -19,8 +27,8 @@ describe('LinkedList', () => {
   })
 
   it('can find right item with param, and return `false` if not find', () => {
-    expect(nodesExample.find(1).value).toBe(1);
-    expect(nodesExample.find('hello').value).toBe('hello');
+    expect((nodesExample.find(1) as LinkedNode).value).toBe(1);
+    expect((nodesExample.find('hello') as LinkedNode).value).toBe('hello');
     expect(nodesExample.find()).toBe(false);
   })
 
@@ -40,17 +48,16 @@ describe('LinkedList', () => {
 });
 
 describe('isCircle', () => {
-  let nodesExample2 = link.nodes()
+  let nodesExample2 = linkedList()
   it('return `false` if no circle', () => {
-    expect(link.isCircle(nodesExample2.get())).toBe(false);
+    expect(isCircle(nodesExample2.get())).toBe(false);
     nodesExample2.insert(1);
-    expect(link.isCircle(nodesExample2.get())).toBe(false);
+    expect(isCircle(nodesExample2.get())).toBe(false);
     nodesExample2.insert(2);
-    expect(link.isCircle(nodesExample2.get())).toBe(false);
+    expect(isCircle(nodesExample2.get())).toBe(false);
   })
 
   it('return `true` if has circle', () => {
-    const generatorNode = link.generatorNode;
     let a1 = generatorNode('head')
     let a2 = generatorNode('1')
     let a3 = generatorNode('2')
@@ -59,22 +66,21 @@ describe('isCircle', () => {
     a2.next = a3;
     a3.next = a4;
     a4.next = a1;
-    expect(link.isCircle(a1)).toBe(true);
+    expect(isCircle(a1)).toBe(true);
   })
   it('can judge whether a single node is a circle', () => {
-    const generatorNode = link.generatorNode;
     let a1 = generatorNode('head')
     a1.next = a1;
-    expect(link.isCircle(a1)).toBe(true);
+    expect(isCircle(a1)).toBe(true);
   })
 })
 
 describe('megrgeList', () => {
   it('return second if first is `null`', () => {
-    let a = link.nodes();
-    let b = link.nodes();
+    let a = linkedList();
+    let b = linkedList();
     b.insert(1)
-    expect(link.mergeList(a.get(), b.get())).toEqual({
+    expect(mergeList(a.get(), b.get())).toEqual({
       value: 'head',
       next: {
         value: 1,
@@ -83,10 +89,10 @@ describe('megrgeList', () => {
     })
   });
   it('return first if first is not `null` and second is `null`', () => {
-    let a = link.nodes();
-    let b = link.nodes();
+    let a = linkedList();
+    let b = linkedList();
     b.insert(1)
-    expect(link.mergeList(b.get(), a.get())).toEqual({
+    expect(mergeList(b.get(), a.get())).toEqual({
       value: 'head',
       next: {
         value: 1,
@@ -96,8 +102,8 @@ describe('megrgeList', () => {
   });
 
   it('can merge success', () => {
-    let a = link.nodes();
-    let b = link.nodes();
+    let a = linkedList();
+    let b = linkedList();
     a.insert(1)
     a.insert(3)
     a.insert(5)
@@ -106,7 +112,7 @@ describe('megrgeList', () => {
     b.insert(2);
     b.insert(4);
 
-    expect(link.mergeList(b.get(), a.get())).toEqual({
+    expect(mergeList(b.get(), a.get())).toEqual({
       value: 'head',
       next: {
         value: 1,
@@ -133,45 +139,45 @@ describe('megrgeList', () => {
 
 describe('deleteLastIndexOf', () => {
   it('will return `false` if index is not invalid', () => {
-    let deleteNodes = link.nodes();
+    let deleteNodes = linkedList();
     deleteNodes.insert('1')
     deleteNodes.insert('2')
-    expect(link.deleteLastKth(deleteNodes.get(), -1)).toBe(false);
-    expect(link.deleteLastKth(deleteNodes.get(), 3)).toBe(false);
+    expect(deleteLastKth(deleteNodes.get(), -1)).toBe(false);
+    expect(deleteLastKth(deleteNodes.get(), 3)).toBe(false);
   })
   it('can delete successful when list only one node', () => {
-    let deleteNodes = link.nodes();
+    let deleteNodes = linkedList();
     deleteNodes.insert(1)
-    let resultNodes = link.nodes();
-    expect(link.deleteLastKth(deleteNodes.get(), 1)).toEqual(resultNodes.get());
+    let resultNodes = linkedList();
+    expect(deleteLastKth(deleteNodes.get(), 1)).toEqual(resultNodes.get());
   })
   it('will return list when delete success', () => {
-    let deleteNodes = link.nodes();
+    let deleteNodes = linkedList();
     deleteNodes.insert(1)
     deleteNodes.insert(2)
     deleteNodes.insert(3)
-    let resultNodes = link.nodes();
+    let resultNodes = linkedList();
     resultNodes.insert(1)
     resultNodes.insert(3)
-    expect(link.deleteLastKth(deleteNodes.get(), 2)).toEqual(resultNodes.get());
+    expect(deleteLastKth(deleteNodes.get(), 2)).toEqual(resultNodes.get());
   })
 })
 
 describe('findMiddleNode', () => {
   it('will find correct node when length is odd', () => {
-    let node4 = link.nodes();
+    let node4 = linkedList();
     node4.insert(1)
-    expect(link.findMiddleNode(node4.get()).value).toBe(1);
+    expect(findMiddleNode(node4.get()).value).toBe(1);
     node4.insert(2)
     node4.insert(3)
-    expect(link.findMiddleNode(node4.get()).value).toBe(2);
+    expect(findMiddleNode(node4.get()).value).toBe(2);
   })
   it('will find correct node when length is even', () => {
-    let node5 = link.nodes();
+    let node5 = linkedList();
     node5.insert(1)
     node5.insert(2)
     node5.insert(3)
     node5.insert(4)
-    expect(link.findMiddleNode(node5.get()).value).toBe(3);
+    expect(findMiddleNode(node5.get()).value).toBe(3);
   })
 })

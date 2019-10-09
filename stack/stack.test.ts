@@ -1,8 +1,8 @@
-const stackExample = require('./stack');
+import { stack } from './stack';
 
 describe('stack', () => {
   it('push', () => {
-    var a = stackExample.stack();
+    var a = stack();
     a.push(1);
     expect(a.get()).toEqual([1]);
   })

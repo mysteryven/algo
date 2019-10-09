@@ -1,3 +1,7 @@
+/**
+ * 基于链表实现栈
+ */
+
 function stack() {
   let a = []
   return {
@@ -11,4 +15,6 @@ function stack() {
   }
 }
 
-module.exports.stack = stack;
+export {
+  stack
+};
