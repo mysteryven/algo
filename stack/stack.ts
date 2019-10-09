@@ -1,17 +1,32 @@
+import { generatorNode } from "../linkedList/linkedList";
+
 /**
  * 基于链表实现栈
  */
 
-function stack() {
-  let a = []
+interface Stack {
+  push: (item: any) => void
+  pop: () => any
+}
+
+function stack(): Stack {
+  let top = null;
   return {
     push: (item) => {
-      a.push(item)
+      let node = generatorNode(item);
+      if (top !== null) {
+        node.next = top;
+      }
+      top = node;
     },
     pop: () => {
-      a.pop()
+      if (top === null) {
+        return false
+      }
+      const res = top.value;
+      top = top.next;
+      return res;
     },
-    get: () => a
   }
 }
 
