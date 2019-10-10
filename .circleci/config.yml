@@ -35,8 +35,4 @@ jobs:
 
       # run tests!
       - run: yarn test:build
-
-      - run:
-        name: Upload CodeCov.io Data
-        command: bash <(curl -s https://codecov.io/bash) -F unittests
-        when: always # Uploads code coverage results, pass or fail
+    
