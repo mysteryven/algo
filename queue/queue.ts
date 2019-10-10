@@ -1,5 +1,7 @@
 /**
- * 基于链表s
+ * 基于数组的循环队列
+ * 因为循环队列解决的是不用在出队后搬迁数据了
+ * 所以没有选择链表来实现
  * 
  */
 import { generatorNode } from "../linkedList/linkedList";
