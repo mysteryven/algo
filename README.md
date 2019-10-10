@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/mysteryven/algo.svg?style=svg)](https://circleci.com/gh/mysteryven/algo)
 
+[![codecov](https://codecov.io/gh/mysteryven/algo/branch/master/graph/badge.svg)](https://codecov.io/gh/mysteryven/algo)
+
 - 链表(inkedList)
   - [x] 单链表反转
   - [x] 链表中环的检测

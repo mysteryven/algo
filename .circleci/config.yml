@@ -39,5 +39,4 @@ jobs:
       - run: yarn test:build
       - codecov/upload:
           file: coverage/*.json
-          token: "1de87c62-cacc-425c-8d05-d8e98516098b"
       
