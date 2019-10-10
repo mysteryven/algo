@@ -1,7 +1,7 @@
 import { stack, Chrome } from './stack';
 
 describe('stack', () => {
-  it('push and pop', () => {
+  it('push and pop with no error', () => {
     var a = stack();
     expect(a.pop()).toEqual(false);
     a.push(1);
@@ -68,6 +68,6 @@ describe('Chrome', () => {
     expect(chromeExample.showPage()).toBe('page2.com')
 
     chromeExample.pushPage('page4.com')
-    // expect(chromeExample.goAhead()).toBe(false)
+    expect(chromeExample.goAhead()).toBe(false)
   })
 })

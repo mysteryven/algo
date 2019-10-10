@@ -72,7 +72,6 @@ function Chrome(): IChrome {
     },
     goAhead() {
       let nextUrl = deStack.pop();
-      console.log(nextUrl)
       if (nextUrl !== false) {
         enStack.push(nextUrl);
         return true;
@@ -80,7 +79,7 @@ function Chrome(): IChrome {
       return false;
     },
     goBack() {
-      if (enStack.length <= 1 ) {
+      if (enStack.length <= 1) {
         return false
       }
 
