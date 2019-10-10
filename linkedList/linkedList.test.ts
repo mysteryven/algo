@@ -1,15 +1,15 @@
-import {LinkedNode} from './linkedList';
 import {
+  LinkedNode,
   linkedList,
   findMiddleNode,
   deleteLastKth,
   isCircle,
   mergeList,
-  generatorNode
+  generatorNode,
 } from './linkedList';
 
 describe('LinkedList', () => {
-  let nodesExample = linkedList();
+  const nodesExample = linkedList();
   nodesExample.insert(1);
   nodesExample.insert('hello');
 
