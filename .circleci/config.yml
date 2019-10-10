@@ -37,6 +37,7 @@ jobs:
 
       # run tests!
       - run: yarn test:build
+      
       - codecov/upload:
         file: coverage/*.json
         flags: frontend
