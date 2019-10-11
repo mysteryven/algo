@@ -19,5 +19,9 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "prefer-const": ["error", {
+            "destructuring": "any",
+            "ignoreReadBeforeAssign": false
+        }]
     }
 };

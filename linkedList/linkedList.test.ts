@@ -12,7 +12,7 @@ describe('LinkedList', () => {
   const nodesExample = linkedList();
   nodesExample.insert(1);
   nodesExample.insert('hello');
-
+ 
   it('can insert at the last position', () => {
     expect(nodesExample.get()).toEqual({
       value: 'head',
