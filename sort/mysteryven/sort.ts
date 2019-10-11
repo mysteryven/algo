@@ -115,6 +115,19 @@ function partition(arr: ArrType, lo: number = 0, hi: number = arr.length - 1) {
   return j 
 }
 
+function selectSort(arr) {
+  let len = arr.length
+  for(let i = 0; i < len; i++) {
+    let min = i;
+    for (let j = i; j < len; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    exch(min, i, arr);
+  }
+  return arr;
+}
 
 
 export {
@@ -123,4 +136,5 @@ export {
   merge,
   partition,
   quickSort,
+  selectSort,
 }

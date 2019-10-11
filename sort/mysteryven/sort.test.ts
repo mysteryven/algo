@@ -1,4 +1,4 @@
-import { insertSort, mergeSort, merge, partition, quickSort } from './sort';
+import { insertSort, mergeSort, merge, partition, quickSort, selectSort } from './sort';
 
 const res = [1, 2, 3, 4, 5];
 
@@ -86,4 +86,8 @@ function testGroup(fun) {
     expect(b).toEqual(res)
   }
 }
+
+describe('selectSort', () => {
+  testGroup(selectSort);
+})
 
