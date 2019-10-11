@@ -115,7 +115,7 @@ function partition(arr: ArrType, lo: number = 0, hi: number = arr.length - 1) {
   return j 
 }
 
-function selectSort(arr) {
+function selectSort(arr: ArrType) {
   let len = arr.length
   for(let i = 0; i < len; i++) {
     let min = i;
