@@ -42,7 +42,7 @@ function mergeSort(arr: ArrType) {
 
 
 // TODO it will be refactor soon
-function merge(arr: ArrType, lo: number, mid:number, hi:number) {
+function merge(arr: ArrType, lo: number, mid: number, hi: number) {
   const temp = [];
   let tempIndex = 0;
   let i = lo;
@@ -76,20 +76,51 @@ function merge(arr: ArrType, lo: number, mid:number, hi:number) {
   return arr;
 }
 
-function partition(arr: ArrType, lo: number, hi: number) {
-  if (arr.length === 1) {
-    return arr;
+function quickSort(arr) {
+  quickSort_inner(arr, 0, arr.length -1);
+  return arr; 
+
+  function quickSort_inner(arr, lo, hi) {
+    if (hi - lo < 1) {
+      return;
+    }
+    let mid = lo + Math.floor((hi - lo) / 2);
+    const j = partition(arr, lo, hi);
+    quickSort_inner(arr, lo, j)
+    quickSort_inner(arr, j + 1, hi)
   }
-  let pivot = arr[lo] 
+}
+
+function partition(arr: ArrType, lo: number = 0, hi: number = arr.length - 1) {
+  let pivot = lo;
   let i = lo + 1;
   let j = hi;
 
-  return arr;
+  while (true) {
+    while (arr[i] < arr[pivot] && i <= hi) {
+      i++;
+    }
+
+    while (arr[j] > arr[pivot] && j >= lo) {
+      j--;
+    }
+
+    if (j < i) {
+      break;
+    }
+    exch(i, j, arr);
+  }
+
+  exch(pivot, j, arr);
+  return j 
 }
+
+
 
 export {
   insertSort,
   mergeSort,
   merge,
   partition,
+  quickSort,
 }
