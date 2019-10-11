@@ -1,4 +1,4 @@
-import { insertSort, mergeSort, merge } from './sort';
+import { insertSort, mergeSort, merge, partition } from './sort';
 
 const res = [1, 2, 3, 4, 5];
 
@@ -28,6 +28,28 @@ describe('merge function', () => {
     expect(merge(a, 0, 2, 5)).toEqual([0, 1, 2, 3, 5, 9])
   })
 })
+
+// describe('quickSort', () => {
+//   describe('partition', () => {
+//     it('works when array has one element', () => {
+//       const a = [1];
+//       expect(partition(a)).toEqual([1])
+//     })
+//     it('works when array lengh is even', () => {
+//       const a1 = [2, 1];
+//       const a2 = [3, 1, 4, 5, 2];
+//       expect(partition(a1)).toEqual([1, 2]);
+//       expect(partition(a2)).toEqual([1, 2, 3, 4, 5]);
+//     })
+//     it('works when array length is odd', () => {
+//       const a1 = [2, 1, 3];
+//       expect(partition(a1)).toEqual([1, 2, 3]);
+//       const a2 = [3, 1, 4, 5, 2, 6];
+//       expect(partition(a2)).toEqual([1, 2, 3, 4, 5, 6]);
+//     })
+//   })
+
+// })
 
 
 function testGroup(fun) {

@@ -41,7 +41,8 @@ function mergeSort(arr: ArrType) {
 }
 
 
-function merge(arr, lo, mid, hi) {
+// TODO it will be refactor soon
+function merge(arr: ArrType, lo: number, mid:number, hi:number) {
   const temp = [];
   let tempIndex = 0;
   let i = lo;
@@ -63,6 +64,7 @@ function merge(arr, lo, mid, hi) {
     tempIndex++
     i++
   }
+
   while (j <= hi) {
     temp[tempIndex] = arr[j];
     j++
@@ -74,9 +76,20 @@ function merge(arr, lo, mid, hi) {
   return arr;
 }
 
+function partition(arr: ArrType, lo: number, hi: number) {
+  if (arr.length === 1) {
+    return arr;
+  }
+  let pivot = arr[lo] 
+  let i = lo + 1;
+  let j = hi;
+
+  return arr;
+}
 
 export {
   insertSort,
   mergeSort,
   merge,
+  partition,
 }
