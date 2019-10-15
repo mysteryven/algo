@@ -116,7 +116,7 @@ function partition(arr: ArrType, lo: number = 0, hi: number = arr.length - 1) {
 }
 
 function selectSort(arr: ArrType) {
-  let len = arr.length
+  let len = arr.length  
   for(let i = 0; i < len; i++) {
     let min = i;
     for (let j = i; j < len; j++) {
