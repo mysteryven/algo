@@ -1,6 +1,14 @@
+
+
 [![CircleCI](https://circleci.com/gh/mysteryven/algo.svg?style=svg)](https://circleci.com/gh/mysteryven/algo)
 
 [![codecov](https://codecov.io/gh/mysteryven/algo/branch/master/graph/badge.svg)](https://codecov.io/gh/mysteryven/algo)
+
+## 说明 
+
+我目前在通过极客时间的《数据结构与算法之美》学习算法，准备把里面的题目实现一遍， 把基础知识过一遍之后，我会去刷 LeetCode，该仓库后面会更新 LeetCode 的内容。
+
+## 目录
 
 - 链表(inkedList)
   - [x] 单链表反转
@@ -32,7 +40,12 @@
 
 - 查找(search)
   - [x] 有序数组的二分查找
-  - [ ] 求一个数的平方根
-  - [ ] 查找第一个值等于给定值的元素
-  - [ ] 查找最后一个值等于给定值的元素
+  - [x] 求一个数的平方根，精度在 0.01
+  - [x] 查找第一个值等于给定值的元素
+
+- 散列表
+  - [ ] 基于链表法解决冲突的散列表
+  - [ ] LRU 缓存淘汰算法
+
+
 
