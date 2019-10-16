@@ -29,8 +29,6 @@
 
 - 排序(sort)
 
-  there are two versions in this section, one is commited by my colleague(wwd), another is mine(mysteryven).
-
   - [x] 冒泡排序
   - [x] 插入排序
   - [x] 选择排序
