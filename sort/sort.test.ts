@@ -1,4 +1,5 @@
-import { insertSort, mergeSort, merge, partition, quickSort, selectSort } from './sort';
+import { insertSort, mergeSort, merge, partition, quickSort, selectSort, kthNum } from './sort';
+import { forOfStatement } from '@babel/types';
 
 const res = [1, 2, 3, 4, 5];
 
@@ -91,3 +92,11 @@ describe('selectSort', () => {
   testGroup(selectSort);
 })
 
+describe('kthNum', () => {
+  const a1 = [1, 4, 8, 4, 5];
+  const a2 = [1, 4, 8, 4, 5];
+  it ('can find ktn number', () => {
+    expect(kthNum(a1, 3)).toBe(4)
+    expect(kthNum(a1, 5)).toBe(8)
+  })
+})

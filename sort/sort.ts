@@ -84,28 +84,28 @@ function quickSort(arr) {
     if (hi - lo < 1) {
       return;
     }
-    let mid = lo + Math.floor((hi - lo) / 2);
     const j = partition(arr, lo, hi);
     quickSort_inner(arr, lo, j)
     quickSort_inner(arr, j + 1, hi)
   }
 }
 
-function partition(arr: ArrType, lo: number = 0, hi: number = arr.length - 1) {
+function partition(arr: ArrType, lo: number = 0, hi: number = arr.length - 1, isKth?: boolean) {
   let pivot = lo;
+
   let i = lo + 1;
   let j = hi;
 
   while (true) {
-    while (arr[i] < arr[pivot] && i <= hi) {
+    while (arr[i] <= arr[pivot] && i <= hi - 1) {
       i++;
     }
 
-    while (arr[j] > arr[pivot] && j >= lo) {
+    while (arr[j] >= arr[pivot] && j > lo) {
       j--;
     }
 
-    if (j < i) {
+    if (j <= i) {
       break;
     }
     exch(i, j, arr);
@@ -129,6 +129,24 @@ function selectSort(arr: ArrType) {
   return arr;
 }
 
+// 用快排的思想
+function kthNum(arr: ArrType, n: number) {
+  return kthNumInner([...arr] as number[], 0, arr.length - 1);
+
+  function kthNumInner(arr: ArrType, lo:number, hi:number) {
+    const target = partition(arr, lo, hi);
+    if (target + 1 === n) {
+      return arr[target]
+    } else if (target + 1 > n) {
+      return  kthNumInner(arr, lo, target - 1) 
+    } else {
+      return kthNumInner(arr, target + 1, hi) 
+    }
+  }
+}
+
+
+
 
 export {
   insertSort,
@@ -137,4 +155,5 @@ export {
   partition,
   quickSort,
   selectSort,
+  kthNum
 }
