@@ -1,4 +1,12 @@
-import { insertSort, mergeSort, merge, partition, quickSort, selectSort } from './sort';
+import {
+  insertSort,
+  mergeSort,
+  merge,
+  partition,
+  quickSort,
+  selectSort,
+  bucketSort
+} from './sort';
 
 const res = [1, 2, 3, 4, 5];
 
@@ -89,5 +97,22 @@ function testGroup(fun) {
 
 describe('selectSort', () => {
   testGroup(selectSort);
+})
+
+
+describe('bucketSort', () => {
+  it('works when length <=1 ', () => {
+    const a = [];
+    expect(bucketSort(a, 5)).toEqual([]);
+  })
+  it('get same result with quicksort', () => {
+    const a = [22, 2, 4, 49, 11, 12, 44, 55, 1, 23, 24, 33, 4, 2, 5, 1, 25, 38, 36, 14, 48, 5, 15, 55, 59]
+    const res1 = bucketSort(a, 5);
+    const res2 = quickSort(a);
+    console.log(res1)
+    console.log(res2)
+    expect(res1).toEqual(res2);
+  })
+
 })
 

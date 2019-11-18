@@ -40,8 +40,6 @@ function mergeSort(arr: ArrType) {
   }
 }
 
-
-// TODO it will be refactor soon
 function merge(arr: ArrType, lo: number, mid: number, hi: number) {
   const temp = [];
   let tempIndex = 0;
@@ -101,11 +99,11 @@ function partition(arr: ArrType, lo: number = 0, hi: number = arr.length - 1) {
       i++;
     }
 
-    while (arr[j] > arr[pivot] && j >= lo) {
+    while (arr[j] >= arr[pivot] && j > lo) {
       j--;
     }
 
-    if (j < i) {
+    if (j <= i) {
       break;
     }
     exch(i, j, arr);
@@ -129,6 +127,42 @@ function selectSort(arr: ArrType) {
   return arr;
 }
 
+function bucketSort(arr: number[], size: number) {
+  if (arr.length <= 1) {
+    return [...arr];
+  }
+
+  const bucket: number[][] = [];
+  let max = arr[0], min = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = i;
+    }
+    if (arr[i] < min) {
+      min = i;
+    }
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    const bucketIndex = Math.floor((arr[i] - min) / size);
+    if (!bucket[bucketIndex]) {
+      bucket[bucketIndex] = []
+    }
+    let currentBucket = bucket[bucketIndex];
+    currentBucket.push(arr[i]);
+    let j = currentBucket.length - 1;
+    while(j >= 1 && currentBucket[j] <= currentBucket[j-1]) {
+      exch(j, j-1, currentBucket);
+      j--;
+    }
+  }
+
+  const res = bucket.reduce((prev, current) => {
+    return [...prev, ...current];
+  }, [])
+
+  return res;
+}
 
 export {
   insertSort,
@@ -137,4 +171,5 @@ export {
   partition,
   quickSort,
   selectSort,
+  bucketSort
 }
