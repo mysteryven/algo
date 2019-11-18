@@ -5,7 +5,8 @@ import {
   partition,
   quickSort,
   selectSort,
-  bucketSort
+  bucketSort,
+  kthNum
 } from './sort';
 
 const res = [1, 2, 3, 4, 5];
@@ -64,7 +65,6 @@ describe('quickSort', () => {
       testGroup(quickSort);
     })
   })
-
 })
 
 function testGroup(fun) {
@@ -99,7 +99,6 @@ describe('selectSort', () => {
   testGroup(selectSort);
 })
 
-
 describe('bucketSort', () => {
   it('works when length <=1 ', () => {
     const a = [];
@@ -113,6 +112,13 @@ describe('bucketSort', () => {
     console.log(res2)
     expect(res1).toEqual(res2);
   })
-
 })
 
+describe('kthNum', () => {
+  const a1 = [1, 4, 8, 4, 5];
+  const a2 = [1, 4, 8, 4, 5];
+  it ('can find ktn number', () => {
+    expect(kthNum(a1, 3)).toBe(4)
+    expect(kthNum(a1, 5)).toBe(8)
+  })
+})
