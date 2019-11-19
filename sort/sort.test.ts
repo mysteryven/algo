@@ -6,7 +6,8 @@ import {
   quickSort,
   selectSort,
   bucketSort,
-  kthNum
+  kthNum,
+  countingSort
 } from './sort';
 
 const res = [1, 2, 3, 4, 5];
@@ -108,17 +109,27 @@ describe('bucketSort', () => {
     const a = [22, 2, 4, 49, 11, 12, 44, 55, 1, 23, 24, 33, 4, 2, 5, 1, 25, 38, 36, 14, 48, 5, 15, 55, 59]
     const res1 = bucketSort(a, 5);
     const res2 = quickSort(a);
-    console.log(res1)
-    console.log(res2)
     expect(res1).toEqual(res2);
   })
 })
 
 describe('kthNum', () => {
   const a1 = [1, 4, 8, 4, 5];
-  const a2 = [1, 4, 8, 4, 5];
   it ('can find ktn number', () => {
     expect(kthNum(a1, 3)).toBe(4)
     expect(kthNum(a1, 5)).toBe(8)
+  })
+})
+
+describe('countingSort', () => {
+  it('works when length <=1 ', () => {
+    const a = [];
+    expect(countingSort(a, 5)).toEqual([]);
+  })
+  it('get same result with quicksort', () => {
+    const a = [22, 2, 4, 49, 11, 12, 44, 55, 1, 23, 24, 33, 4, 2, 5, 1, 25, 38, 36, 14, 48, 5, 15, 55, 59]
+    const res1 = countingSort(a);
+    const res2 = quickSort(a);
+    expect(res1).toEqual(res2);
   })
 })

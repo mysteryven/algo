@@ -75,8 +75,8 @@ function merge(arr: ArrType, lo: number, mid: number, hi: number) {
 }
 
 function quickSort(arr) {
-  quickSort_inner(arr, 0, arr.length -1);
-  return arr; 
+  quickSort_inner(arr, 0, arr.length - 1);
+  return arr;
 
   function quickSort_inner(arr, lo, hi) {
     if (hi - lo < 1) {
@@ -110,12 +110,12 @@ function partition(arr: ArrType, lo: number = 0, hi: number = arr.length - 1, is
   }
 
   exch(pivot, j, arr);
-  return j 
+  return j
 }
 
 function selectSort(arr: ArrType) {
-  let len = arr.length  
-  for(let i = 0; i < len; i++) {
+  let len = arr.length
+  for (let i = 0; i < len; i++) {
     let min = i;
     for (let j = i; j < len; j++) {
       if (arr[j] < arr[min]) {
@@ -151,8 +151,8 @@ function bucketSort(arr: number[], size: number) {
     let currentBucket = bucket[bucketIndex];
     currentBucket.push(arr[i]);
     let j = currentBucket.length - 1;
-    while(j >= 1 && currentBucket[j] <= currentBucket[j-1]) {
-      exch(j, j-1, currentBucket);
+    while (j >= 1 && currentBucket[j] <= currentBucket[j - 1]) {
+      exch(j, j - 1, currentBucket);
       j--;
     }
   }
@@ -167,20 +167,58 @@ function bucketSort(arr: number[], size: number) {
 function kthNum(arr: ArrType, n: number) {
   return kthNumInner([...arr] as number[], 0, arr.length - 1);
 
-  function kthNumInner(arr: ArrType, lo:number, hi:number) {
+  function kthNumInner(arr: ArrType, lo: number, hi: number) {
     const target = partition(arr, lo, hi);
     if (target + 1 === n) {
       return arr[target]
     } else if (target + 1 > n) {
-      return  kthNumInner(arr, lo, target - 1) 
+      return kthNumInner(arr, lo, target - 1)
     } else {
-      return kthNumInner(arr, target + 1, hi) 
+      return kthNumInner(arr, target + 1, hi)
     }
   }
 }
 
+function countingSort(arr: number[]) {
+  let r: number[] = [];
+  let c: number[] = []
 
+  if (arr.length <= 1) {
+    return [...arr];
+  }
 
+  let min:number = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (min > (arr[i] as number)) {
+      min = arr[i];
+    }
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    const index = arr[i] - min;
+    if (r[index]) {
+      r[index] += 1;
+    } else {
+      r[index] = 1;
+    }
+  }
+
+  for (let i: number = 0; i < r.length; i++) {
+    if (!r[i]) {
+      r[i] = 0;
+    }
+
+    if (i > 0) {
+      r[i] = r[i - 1] + r[i]
+    }
+  }
+
+  for (let i: number = arr.length - 1; i >= 0; i--) {
+    c[r[arr[i] - min] - 1] = arr[i];
+    r[arr[i] - min] -= 1;
+  }
+  return c;
+}
 
 export {
   insertSort,
@@ -190,5 +228,6 @@ export {
   quickSort,
   selectSort,
   bucketSort,
-  kthNum
+  kthNum,
+  countingSort
 }
