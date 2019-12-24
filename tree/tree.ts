@@ -41,7 +41,11 @@ class Tree {
     }
   }
 
-  get Tree() {
+  get trees() {
     return this.root;
   }
+}
+
+export {
+  Tree
 }
