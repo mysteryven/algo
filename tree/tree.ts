@@ -20,8 +20,8 @@ class Tree {
     if (this.root === null) {
       this.root = gTreeNode(data);
     } else {
-      let p:TreeNode = this.root;
-      while(true) {
+      let p: TreeNode = this.root;
+      while (true) {
         if (data < p.data) {
           if (p.left) {
             p = p.left;
@@ -43,6 +43,23 @@ class Tree {
 
   get trees() {
     return this.root;
+  }
+
+  inOrderTraversal() {
+    let a = []
+    if (!this.root) {
+      return [];
+    }
+    function print(node) {
+      if (!node) {
+        return ;
+      }
+      print(node.left);
+      a.push(node.data);
+      print(node.right);
+    }
+    print(this.root);
+    return a;
   }
 }
 
