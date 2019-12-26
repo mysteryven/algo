@@ -1,4 +1,3 @@
-
 interface TreeNode {
   left: TreeNode | null;
   right: TreeNode | null;
@@ -10,7 +9,7 @@ function gTreeNode(num: number): TreeNode {
     left: null,
     right: null,
     data: num
-  }
+  };
 }
 
 class Tree {
@@ -26,14 +25,14 @@ class Tree {
           if (p.left) {
             p = p.left;
           } else {
-            p.left = gTreeNode(data)
+            p.left = gTreeNode(data);
             break;
           }
         } else {
           if (p.right) {
             p = p.right;
           } else {
-            p.right = gTreeNode(data)
+            p.right = gTreeNode(data);
             break;
           }
         }
@@ -45,14 +44,40 @@ class Tree {
     return this.root;
   }
 
+  remove(num) {
+    if (!this.root) {
+      return null;
+    }
+  }
+
+  find(num) {
+    let currentNode = null;
+    let parentNode = null;
+    let type = "left";
+
+    return find_inner(num, this.root);
+
+    function find_inner(num, node) {
+      if (!node) {
+        return false;
+      }
+    }
+
+    return {
+      currentNode,
+      type,
+      parentNode
+    };
+  }
+
   inOrderTraversal() {
-    let a = []
+    let a = [];
     if (!this.root) {
       return [];
     }
     function print(node) {
       if (!node) {
-        return ;
+        return;
       }
       print(node.left);
       a.push(node.data);
@@ -63,6 +88,4 @@ class Tree {
   }
 }
 
-export {
-  Tree
-}
+export { Tree };
